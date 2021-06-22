@@ -5010,9 +5010,10 @@ get_color_indicator (const struct fileinfo *f, bool symlink_target)
         }
     }
 
-  /* Check the file's suffix only if still classified as C_FILE.  */
+  /* Check the file's suffix. */
   ext = NULL;
-  if (type == C_FILE)
+  if ( (type == C_FILE) || (type == C_SETUID) || (type == C_SETGID) ||
+       (type == C_CAP) || (type == C_EXEC) || (type == C_MULTIHARDLINK))
     {
       /* Test if NAME has a recognized suffix.  */
 
